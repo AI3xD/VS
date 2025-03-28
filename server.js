@@ -4,9 +4,10 @@ const WebSocket = require('ws');
 console.log("🚀 Iniciando servidor WebSocket...");
 
 // Inicia el servidor WebSocket en el puerto 9090
-const wss = new WebSocket.Server({ port: 9090, host: '10.0.150.235' });
+const wss = new WebSocket.Server({ port: 9090, host: '0.0.0.0' });
 
-console.log("✅ Servidor WebSocket corriendo en ws://10.0.150.235:9090");
+console.log("✅ Servidor WebSocket corriendo en ws://0.0.0.0:9090");
+
 
 let count = 0;
 

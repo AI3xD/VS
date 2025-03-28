@@ -24,7 +24,7 @@
     <script src="script.js"></script>
     <script>
         //CAMBIAR A LA IP DE MI PC
-        const socket = new WebSocket('ws://10.0.150.235:9090');
+        const socket = new WebSocket('ws://localhost:9090');  // Usando localhost
     
         socket.addEventListener('message', function(event) {
             const data = JSON.parse(event.data);
