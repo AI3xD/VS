@@ -1,0 +1,72 @@
+body {
+    text-align: center;
+}
+
+button {
+    font-size: 24px;
+    padding: 20px 40px;
+    margin-top: 50px;
+    background-color: #8d1306; /* Rosa vibrante */
+    color: white; /* Texto blanco */
+    border: 2px solid #ffffff; /* Borde blanco sólido */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    transition: background-color 0.3s, transform 0.2s; /* Transiciones suaves */
+  }
+  
+  button:hover {
+    background-color: #ffffff; /* Cambia a blanco al pasar sobre el botón */
+    color: #8b0404; /* Texto rosa */
+    transform: scale(1.05); /* Escala ligeramente el botón */
+  }
+  
+  button:active {
+    transform: scale(0.95); /* Reduce ligeramente el tamaño cuando se hace clic */
+  }
+
+#counter {
+    font-size: 48px;
+    margin-top: 20px;
+}
+
+#image {
+    display: none; /* Oculta la imagen inicialmente */
+    max-width: 200px;
+    margin-top: 20px;
+}
+
+body {
+    background-image: url('fondoo.jpg');
+    background-size: cover; /* Ajusta la imagen para cubrir todo el elemento */
+    background-attachment: fixed; /* Fija la imagen de fondo para que no se desplace */
+}
+
+h1 {
+    color: rgb(83, 83, 83); /* Set the text color to purple */
+    -webkit-text-stroke-width: 2px; /* Set the width of the stroke to 1 pixel */
+    -webkit-text-stroke-color: rgb(255, 255, 255); /* Set the color of the stroke to white */
+    font-size: 50px;
+  }
+
+  #externalCounter {
+    font-size: 48px; /* Tamaño de fuente muy grande */
+    color: #ae0e06; /* Color de texto rosa brillante */
+    text-shadow: 2px 2px 4px #ffffff; /* Sombra de texto para dar relieve */
+    padding: 10px 20px; /* Espaciado interior */
+    border-radius: 10px; /* Bordes redondeados */
+    display: inline-block; /* Para que el fondo abarque solo el tamaño del texto */
+    background-color: #454545e9; /* Fondo amarillo brillante */
+  }
+
+  #counter {
+    font-size: 48px; /* Tamaño de fuente muy grande */
+    font-weight: bold; /* Letra en negrita */
+    color: black; /* Color de texto negro */
+    padding: 10px 20px; /* Espaciado interior */
+    border-radius: 10px; /* Bordes redondeados */
+    display: inline-block; /* Para que el fondo abarque solo el tamaño del texto */
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con transparencia */
+  }
+  
+  

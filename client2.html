@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VOTING SYSTEM</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Press a Button to input your vote</h1>
+    
+    <div id="externalCounter">0</div>
+    <br>
+    <br>
+    <button class="incrementButton" data-value="1">1</button>
+    <button class="incrementButton" data-value="2">2</button>
+    <button class="incrementButton" data-value="3">3</button>
+    <button class="incrementButton" data-value="4">4</button>
+    <button class="incrementButton" data-value="5">5</button>
+    <br><br>
+    <button id="reloadButton" style="display: none;">VOTE AGAIN</button>
+
+    <script>
+        //CAMBIAR A LA IP DE MI COMPUTADORA
+        const socket = new WebSocket('ws://10.0.154.181:9090');
+
+        socket.addEventListener('message', function(event) {
+            const data = JSON.parse(event.data);
+            if (data.type === 'count') {
+                document.getElementById('externalCounter').innerText = data.data;
+                if (parseInt(data.data) === 0) {
+                    // Después de 10 segundos, mostrar el botón "Volver a Votar"
+                    setTimeout(function() {
+                        document.getElementById('reloadButton').style.display = 'inline';
+                        document.getElementById('reloadButton').addEventListener('click', function() {
+                            location.reload();
+                        });
+                    }, 15000);
+                }
+            }
+        });
+
+        // Event listener para los botones de incremento
+        document.querySelectorAll('.incrementButton').forEach(button => {
+            button.addEventListener('click', function() {
+                const value = parseInt(this.getAttribute('data-value'));
+                socket.send(JSON.stringify({ type: 'increment', value: value }));
+
+                // Oculta todos los botones después de presionar uno de ellos
+                document.querySelectorAll('.incrementButton').forEach(btn => {
+                    btn.style.display = 'none';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

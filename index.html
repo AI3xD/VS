@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JLMH: VOTING SYSTEM USING WEBSOCKET WITH CONDITIONS</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <button id="startButton">START COUNTDOWN</button>
+    <br>
+    <br>
+    <div id="counter"></div>
+    <br>
+    <br>
+    <div id="externalCounter">0</div>
+    <br>
+    <br>
+    <img id="image" src="Buenooo.webp" alt="Imagen">
+    <audio id="countdownSound" src="song1.mp3" loop></audio>
+    <audio id="finishSound" src="song2.mp3"></audio>
+<br><br>
+    <button id="reloadButton" style="display: none;">VOTE AGAIN</button>
+    <script src="script.js"></script>
+    <script>
+        //CAMBIAR A LA IP DE MI PC
+        const socket = new WebSocket('ws://10.0.154.181:9090');
+    
+        socket.addEventListener('message', function(event) {
+            const data = JSON.parse(event.data);
+            if (data.type === 'count') {
+                document.getElementById('externalCounter').innerText = data.data;
+            }
+        });
+    
+        document.getElementById('startButton').addEventListener('click', function() {
+            socket.send(JSON.stringify({ type: 'increment' }));
+            socket.send(JSON.stringify({ type: 'reset' }));
+        });
+    </script>
+    
+</body>
+</html>
